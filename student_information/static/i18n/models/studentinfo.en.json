@@ -1,0 +1,82 @@
+{
+  "display_name": "Student Info",
+  "fields": {
+    "Address": {
+      "display_name": "Address",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Age": {
+      "display_name": "Age",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Contact": {
+      "display_name": "Contact Number",
+      "help": "",
+      "pattern_msg": "Your input must be a number.",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Course": {
+      "display_name": "Course",
+      "help": "ex: BS Computer Engineering ...",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Gender": {
+      "display_name": "Gender",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Guardian": {
+      "display_name": "Guardian",
+      "help": "Firstname Middlename Lastname",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Guardian_Number": {
+      "display_name": "Guardian Number",
+      "help": "",
+      "pattern_msg": "Your input must be a number.",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "ID": {
+      "display_name": "ID",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Name": {
+      "display_name": "Name",
+      "help": "Firstname Middlename Lastname",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "School": {
+      "display_name": "School",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "YearLevel": {
+      "display_name": "Year Level",
+      "help": "ex: BS 1st Year, 2nd Year ...",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "display_name": "Course Info",
+  "fields": {
+    "Course": {
+      "display_name": "Course",
+      "help": "ex: BS Computer Engineering",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "ID": {
+      "display_name": "ID",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "YearLevel": {
+      "display_name": "Year Level",
+      "help": "ex: BS 1sy Year, 2nd Year ...",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    }
+  }
+}
