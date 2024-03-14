@@ -15,6 +15,13 @@
       "err_msg": {},
       "Choices": {}
     },
+    "Birthdate": {
+      "display_name": "Birthdate",
+      "help": "YYYY/MM/DD",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "Contact": {
       "display_name": "Contact Number",
       "help": "",
@@ -25,6 +32,13 @@
     "Course": {
       "display_name": "Course",
       "help": "ex: BS Computer Engineering ...",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Email": {
+      "display_name": "Email",
+      "help": "",
       "pattern_msg": "",
       "err_msg": {},
       "Choices": {}
@@ -71,10 +85,17 @@
       "err_msg": {},
       "Choices": {}
     },
+    "StudentNo": {
+      "display_name": "Student No",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "YearLevel": {
       "display_name": "Year Level",
-      "help": "ex: BS 1st Year, 2nd Year ...",
-      "pattern_msg": "",
+      "help": "ex: First Year, Second Year ..., Fifth Year",
+      "pattern_msg": "Please input correct School Year Level. Follow the format.",
       "err_msg": {},
       "Choices": {}
     }

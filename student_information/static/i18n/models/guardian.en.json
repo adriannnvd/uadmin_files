@@ -1,0 +1,96 @@
+{
+  "display_name": "Guardian",
+  "fields": {
+    "Address1": {
+      "display_name": "Address",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Address2": {
+      "display_name": "Address",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Contact1": {
+      "display_name": "Contact",
+      "help": "",
+      "pattern_msg": "Your input must be a number.",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Contact2": {
+      "display_name": "Contact",
+      "help": "",
+      "pattern_msg": "Your input must be a number.",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Email1": {
+      "display_name": "Email",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Email2": {
+      "display_name": "Email",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "ID": {
+      "display_name": "ID",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Name": {
+      "display_name": "Name",
+      "help": "Firstname Middlename Lastname",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Occupation1": {
+      "display_name": "Occupation",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Occupation2": {
+      "display_name": "Occupation",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "OtherGuardian": {
+      "display_name": "Other Guardian",
+      "help": "Firstname Middlename Lastname",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Relationship1": {
+      "display_name": "Relationship",
+      "help": "Mother ,Father etc..",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Relationship2": {
+      "display_name": "Relationship",
+      "help": "Mother ,Father etc..",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    }
+  }
+}
