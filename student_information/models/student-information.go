@@ -18,55 +18,78 @@ func (Gender) Female() Gender {
 	return 2
 }
 
+// Year Level Field
+type YearLevel int
+
+func (YearLevel) FirstYear() YearLevel {
+	return 1
+}
+func (YearLevel) SecondYear() YearLevel {
+	return 2
+}
+func (YearLevel) ThirdYear() YearLevel {
+	return 3
+}
+func (YearLevel) FourthYear() YearLevel {
+	return 4
+}
+func (YearLevel) FifthYear() YearLevel {
+	return 5
+}
+
 // StudentInfo Model !
 type StudentInfo struct {
 	uadmin.Model
-	Name       string `uadmin:"required;search;help:Firstname Middlename Lastname"`
-	StudentNo  string `uadmin:"read_only"`
-	Address    string `uadmin:"required"`
-	Contact    string `uadmin:"required;default_value: ;display_name:Contact Number;pattern:^[ ,0-9]*$;pattern_msg:Your input must be a number."`
-	Email      string
-	Birthdate  string   `uadmin:"required;help:YYYY/MM/DD"`
-	Age        int      `uadmin:"required;default_value: "`
-	Gender     Gender   `uadmin:"required;filter"`
+	Name      string `uadmin:"search;help:Firstname Middlename Lastname"`
+	StudentNo string `uadmin:"read_only"`
+	Address   string
+	Contact   string `uadmin:"default_value: ;display_name:Contact Number;pattern:^[ ,0-9]*$;pattern_msg:Your input must be a number."`
+	Email     string
+	Birthdate string `uadmin:"list_exclude;help:YYYY/MM/DD"`
+	Age       int    `uadmin:"list_exclude;default_value: "`
+	Gender    Gender `uadmin:"filter"`
 
-	Guardian   Guardian `uadmin:"required;help:Firstname Middlename Lastname"`
+	Guardian   Guardian `uadmin:"help:Firstname Middlename Lastname"`
 	GuardianID uint
 
-	School     School `uadmin:"required;filter"`
-	SchoolID   uint
-	
-	Course     string `uadmin:"required;filter;help:ex: BS Computer Engineering ..."`
-	YearLevel  string `uadmin:"required;filter;help:ex: First Year, Second Year ..., Fifth Year;pattern:^(First|Second|Third|Fourth|Fifth) Year$;pattern_msg:Please input correct School Year Level. Follow the format."`
+	School   School `uadmin:"filter"`
+	SchoolID uint
+
+	Course    string    `uadmin:"filter;help:ex: BS Computer Engineering ..."`
+	YearLevel YearLevel `uadmin:"filter"`
 }
 
 func (s *StudentInfo) Save() {
-	studentNum := GenerateStudentNo(s.YearLevel)
-	s.StudentNo = studentNum
+	student_information := StudentInfo{}
+	level := s.YearLevel
+	if level == 0 {
+		if uadmin.Count(&student_information, "name = ? AND id <> ?", s.Name, s.ID) == 0 {
 
+			prefix := ""
+			if level == 1 {
+				prefix = "23"
+			} else if level == 2 {
+				prefix = "22"
+			} else if level == 3 {
+				prefix = "21"
+			} else if level == 4 {
+				prefix = "20"
+			} else if level == 5 {
+				prefix = "19"
+			} else {
+				prefix = ""
+			}
+
+			rand.Seed(time.Now().UnixNano())
+			randomNumber := rand.Intn(100000)
+
+			studentNum := fmt.Sprintf("%s-%05d", prefix, randomNumber)
+			s.StudentNo = studentNum
+		}
+	} else {
+		s.YearLevel = level
+	}
 	uadmin.Save(s)
-}
-
-func GenerateStudentNo(yearLevel string) string {
-
-	yearLevelPrefix := map[string]string{
-		"Fifth Year":  "19",
-		"Fourth Year": "20",
-		"Third Year":  "21",
-		"Second Year": "22",
-		"First Year":  "23",
-	}
-
-	prefix, ok := yearLevelPrefix[yearLevel]
-	if !ok {
-		return ""
-	}
-
-	rand.Seed(time.Now().UnixNano())
-	randomNumber := rand.Intn(100000)
-
-	return fmt.Sprintf("%s-%05d", prefix, randomNumber)
-
 }
 
 func (s StudentInfo) Validate() (errMsg map[string]string) {

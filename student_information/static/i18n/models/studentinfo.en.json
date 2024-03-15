@@ -94,8 +94,8 @@
     },
     "YearLevel": {
       "display_name": "Year Level",
-      "help": "ex: First Year, Second Year ..., Fifth Year",
-      "pattern_msg": "Please input correct School Year Level. Follow the format.",
+      "help": "",
+      "pattern_msg": "",
       "err_msg": {},
       "Choices": {}
     }
