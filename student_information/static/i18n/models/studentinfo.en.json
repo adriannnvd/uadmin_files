@@ -101,7 +101,7 @@
     },
     "YearLevel": {
       "display_name": "Year Level",
-      "help": "",
+      "help": "Select your year level",
       "pattern_msg": "",
       "err_msg": {},
       "Choices": {}

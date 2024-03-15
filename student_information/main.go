@@ -1,11 +1,11 @@
 package main
 
 import (
-	// "net/http"
+	"net/http"
 
 	"github.com/adriannnvd/student_information/models"
 
-	// "github.com/adriannnvd/student_information/api"
+	"github.com/adriannnvd/student_information/api"
 
 	"github.com/uadmin/uadmin"
 )
@@ -15,6 +15,7 @@ func main() {
 		models.StudentInfo{},
 		models.School{},
 		models.Guardian{},
+		models.Course{},
 	)
 
 	uadmin.RegisterInlines(models.School{}, map[string]string{
@@ -25,7 +26,11 @@ func main() {
 		"StudentInfo": "GuardianID",
 	})
 
-	// http.HandleFunc("/api/", uadmin.Handler(api.Handler))
+	uadmin.RegisterInlines(models.Course{}, map[string]string{
+		"StudentInfo": "CourseID",
+	})
+
+	http.HandleFunc("/api/", uadmin.Handler(api.Handler))
 
 	uadmin.StartServer()
 

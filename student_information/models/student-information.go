@@ -3,6 +3,8 @@ package models
 import (
 	"fmt"
 	"math/rand"
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/uadmin/uadmin"
@@ -39,7 +41,7 @@ func (YearLevel) FifthYear() YearLevel {
 // StudentInfo Model !
 type StudentInfo struct {
 	uadmin.Model
-	Name      string `uadmin:"search;help:Firstname Middlename Lastname"`
+	Name      string `uadmin:"required;search;help:Firstname Middlename Lastname"`
 	StudentNo string `uadmin:"read_only"`
 	Address   string
 	Contact   string `uadmin:"default_value: ;display_name:Contact Number;pattern:^[ ,0-9]*$;pattern_msg:Your input must be a number."`
@@ -54,37 +56,53 @@ type StudentInfo struct {
 	School   School `uadmin:"filter"`
 	SchoolID uint
 
-	Course    string    `uadmin:"filter;help:ex: BS Computer Engineering ..."`
-	YearLevel YearLevel `uadmin:"filter"`
+	Course    Course `uadmin:"filter;help:ex: BS Computer Engineering ..."`
+	CourseID  uint
+	YearLevel YearLevel `uadmin:"required;filter;help:Select your year level"`
 }
 
 func (s *StudentInfo) Save() {
+	student_information := StudentInfo{}
 	level := s.YearLevel
 	studentID := s.StudentNo
-	student_information := StudentInfo{}
+	currentYear := time.Now().Year() % 100
+	name := s.Name
 
 	if studentID == "" {
 		if uadmin.Count(&student_information, "name = ? AND id <> ?", s.Name, s.ID) == 0 {
 
+			baseCount := uadmin.Count(&student_information, "year_level = ?", s.YearLevel)
+			recentCount := baseCount + 1
+
+			uadmin.Preload(s)
+			schoolCode := s.School.SchoolCode
+
 			prefix := ""
 			if level == 1 {
-				prefix = "23"
+				prefix = strconv.Itoa(currentYear - 1)
 			} else if level == 2 {
-				prefix = "22"
+				prefix = strconv.Itoa(currentYear - 2)
 			} else if level == 3 {
-				prefix = "21"
+				prefix = strconv.Itoa(currentYear - 3)
 			} else if level == 4 {
-				prefix = "20"
+				prefix = strconv.Itoa(currentYear - 4)
 			} else if level == 5 {
-				prefix = "19"
-			} else {
-				prefix = ""
+				prefix = strconv.Itoa(currentYear - 5)
 			}
-
 			rand.Seed(time.Now().UnixNano())
-			randomNumber := rand.Intn(100000)
 
-			studentNum := fmt.Sprintf("%s-%05d", prefix, randomNumber)
+			// Name Initials
+			words := strings.Fields(name)
+			initials := ""
+			for _, word := range words {
+				initials += string(word[0])
+			}
+			initials = strings.ToUpper(initials)
+
+			//Random Numbers
+			randomNumber := rand.Intn(999)
+
+			studentNum := fmt.Sprintf("%v%s-%v-%d-%05d", schoolCode, prefix, initials, randomNumber, recentCount)
 			s.StudentNo = studentNum
 		}
 	} else {

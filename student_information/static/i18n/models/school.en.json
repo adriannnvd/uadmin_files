@@ -29,6 +29,13 @@
       "err_msg": {},
       "Choices": {}
     },
+    "SchoolCode": {
+      "display_name": "School Code",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "SchoolName": {
       "display_name": "School Name",
       "help": "",
@@ -38,6 +45,13 @@
     },
     "Website": {
       "display_name": "Website",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "WebsiteLink": {
+      "display_name": "Website Link",
       "help": "",
       "pattern_msg": "",
       "err_msg": {},
