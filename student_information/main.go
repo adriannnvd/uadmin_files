@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net/http"
+	// "net/http"
 
 	"github.com/adriannnvd/student_information/models"
 
-	"github.com/adriannnvd/student_information/api"
+	// "github.com/adriannnvd/student_information/api"
 
 	"github.com/uadmin/uadmin"
 )
@@ -25,7 +25,7 @@ func main() {
 		"StudentInfo": "GuardianID",
 	})
 
-	http.HandleFunc("/api/", uadmin.Handler(api.Handler))
+	// http.HandleFunc("/api/", uadmin.Handler(api.Handler))
 
 	uadmin.StartServer()
 

@@ -18,7 +18,6 @@ func (Gender) Female() Gender {
 	return 2
 }
 
-// Year Level Field
 type YearLevel int
 
 func (YearLevel) FirstYear() YearLevel {
@@ -45,7 +44,7 @@ type StudentInfo struct {
 	Address   string
 	Contact   string `uadmin:"default_value: ;display_name:Contact Number;pattern:^[ ,0-9]*$;pattern_msg:Your input must be a number."`
 	Email     string
-	Birthdate string `uadmin:"list_exclude;help:YYYY/MM/DD"`
+	Birthdate string `uadmin:"list_excludehelp:YYYY/MM/DD"`
 	Age       int    `uadmin:"list_exclude;default_value: "`
 	Gender    Gender `uadmin:"filter"`
 
@@ -60,9 +59,11 @@ type StudentInfo struct {
 }
 
 func (s *StudentInfo) Save() {
-	student_information := StudentInfo{}
 	level := s.YearLevel
-	if level == 0 {
+	studentID := s.StudentNo
+	student_information := StudentInfo{}
+
+	if studentID == "" {
 		if uadmin.Count(&student_information, "name = ? AND id <> ?", s.Name, s.ID) == 0 {
 
 			prefix := ""
@@ -87,8 +88,9 @@ func (s *StudentInfo) Save() {
 			s.StudentNo = studentNum
 		}
 	} else {
-		s.YearLevel = level
+		s.StudentNo = studentID
 	}
+
 	uadmin.Save(s)
 }
 

@@ -29,6 +29,13 @@
       "err_msg": {},
       "Choices": {}
     },
+    "SchoolName": {
+      "display_name": "School Name",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "Website": {
       "display_name": "Website",
       "help": "",

@@ -17,7 +17,7 @@
     },
     "Birthdate": {
       "display_name": "Birthdate",
-      "help": "YYYY/MM/DD",
+      "help": "",
       "pattern_msg": "",
       "err_msg": {},
       "Choices": {}
@@ -87,6 +87,13 @@
     },
     "StudentNo": {
       "display_name": "Student No",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "TestName": {
+      "display_name": "Test Name",
       "help": "",
       "pattern_msg": "",
       "err_msg": {},
