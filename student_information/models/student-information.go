@@ -46,9 +46,9 @@ type StudentInfo struct {
 	Address   string
 	Contact   string `uadmin:"default_value: ;display_name:Contact Number;pattern:^[ ,0-9]*$;pattern_msg:Your input must be a number."`
 	Email     string
-	Birthdate string `uadmin:"list_exclude;help:YYYY/MM/DD"`
-	Age       int    `uadmin:"list_exclude;default_value: "`
-	Gender    Gender `uadmin:"filter"`
+	Birthdate time.Time `uadmin:"required"`
+	Age       int       `uadmin:"default_value: ;read_only"`
+	Gender    Gender    `uadmin:"filter"`
 
 	Guardian   Guardian `uadmin:"help:Firstname Middlename Lastname"`
 	GuardianID uint
@@ -110,6 +110,14 @@ func (s *StudentInfo) Save() {
 		studentNum := fmt.Sprintf("%v%s-%v-%d-%05d", schoolCode, prefix, initials, randomNumber, recentCount)
 		s.StudentNo = studentNum
 	}
+
+	currentDate := time.Now()
+	age := currentDate.Year() - s.Birthdate.Year()
+
+	if currentDate.YearDay() < s.Birthdate.YearDay() {
+		age--
+	}
+	s.Age = age
 
 	uadmin.Save(s)
 }

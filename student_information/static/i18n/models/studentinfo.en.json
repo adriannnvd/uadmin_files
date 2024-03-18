@@ -17,7 +17,7 @@
     },
     "Birthdate": {
       "display_name": "Birthdate",
-      "help": "YYYY/MM/DD",
+      "help": "",
       "pattern_msg": "",
       "err_msg": {},
       "Choices": {}
