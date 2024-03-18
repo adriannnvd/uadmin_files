@@ -3,7 +3,7 @@
   "fields": {
     "CourseCode": {
       "display_name": "Course Code",
-      "help": "",
+      "help": " BS CpE",
       "pattern_msg": "",
       "err_msg": {},
       "Choices": {}
@@ -17,7 +17,7 @@
     },
     "Name": {
       "display_name": "Name",
-      "help": "",
+      "help": " ex. BS Computer Engineering",
       "pattern_msg": "",
       "err_msg": {},
       "Choices": {}

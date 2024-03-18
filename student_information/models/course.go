@@ -7,8 +7,8 @@ import (
 // Course Info Model !
 type Course struct {
 	uadmin.Model
-	Name       string `uadmin:"required;search"`
-	CourseCode string `uadmin:"required"`
+	Name       string `uadmin:"required;search;help: ex. BS Computer Engineering"`
+	CourseCode string `uadmin:"required;help: BS CpE"`
 }
 
 func (s Course) Validate() (errMsg map[string]string) {

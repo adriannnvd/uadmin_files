@@ -17,6 +17,13 @@
     },
     "Birthdate": {
       "display_name": "Birthdate",
+      "help": "YYYY/MM/DD",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Code": {
+      "display_name": "Code",
       "help": "",
       "pattern_msg": "",
       "err_msg": {},
@@ -31,7 +38,7 @@
     },
     "Course": {
       "display_name": "Course",
-      "help": "ex: BS Computer Engineering ...",
+      "help": "ex. BS Computer Engineering ...",
       "pattern_msg": "",
       "err_msg": {},
       "Choices": {}
