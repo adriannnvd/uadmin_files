@@ -10,10 +10,15 @@
     <form method="POST">
       <!-- The assigned name attribute is equivalent to r.PostFormValue in
       Golang (e.g. r.PostFormValue("username") = "admin") -->
-      <input type="text" name="username" placeholder="Username"><br>
-      <input type="password" name="password" placeholder="Password"><br>
+      <input type="text" name="username" placeholder="Username" value="{{.Username}}"><br>
+      <input type="password" name="password" placeholder="Password" value="{{.Password}}"><br>
 
+      <!-- The OTP field will be displayed if the user has OTPRequired
+        enabled in the database and after the user enters a valid username and
+        password.-->
+      {{if .OTPRequired}}
       <input type="text" name="otp" placeholder="OTP"><br>
+      {{end}}
 
       <br><button type="submit">Login</button><br>
     </form>
