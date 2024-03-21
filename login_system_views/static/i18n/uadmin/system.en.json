@@ -8,6 +8,7 @@
   "Dashboard": "Dashboard",
   "Delete Selected": "Delete Selected",
   "Email Address": "Email Address",
+  "Enter Verification Code": "Enter Verification Code",
   "Excel": "Excel",
   "Filter": "Filter",
   "History": "History",
@@ -23,6 +24,7 @@
   "Settings": "Settings",
   "Shortcuts": "Shortcuts",
   "Username": "Username",
+  "Verification Code": "Verification Code",
   "email address associated with user account": "email address associated with user account",
   "forgot password": "forgot password",
   "loading please wait...": "loading please wait..."
