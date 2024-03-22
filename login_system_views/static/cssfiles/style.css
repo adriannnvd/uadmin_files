@@ -1,0 +1,66 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&family=Odor+Mean+Chey&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+span {
+    font-size: 2.5rem;
+    color:black;
+}
+body {
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    width: 100%;
+}
+.home_container {
+    display: flex;
+    gap:20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.test_container {
+    display: flex;
+    gap:20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+ h1 {
+    color: chocolate;
+    font-size: 2.5rem;
+}
+
+
+ a {
+    border: 1px solid papayawhip;
+    background-color: bisque;
+    height: 40px;
+    width: 100px;
+    text-decoration: none;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 18px;
+    color: chocolate;
+}
+
+img {
+    height: 250px;
+    width: 250px;
+}

@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/cssfiles/style.css">
     <title>Home Page</title>
   </head>
   <body>
+    <div class="home_container"> 
+    <img src="/static/images/login-system.png" >
     <!-- .User is a field that came from the HomeHandler in Golang -->
-    <h1>Login as {{.User}}
+    <h1>Login as <span>{{.User}}</span>
 
     <!-- Validate if the OTP is enabled in the user. Use "with" if the
     user has OTPRequired enabled in the database. Otherwise, use "without". -->
     {{if eq .OTPRequired true}} with {{else}} without {{end}}
     2FA Authentication</h1>
 
+    
+
     <a href="/login_system/test_page" type="button">Test Page</a>
     <a href="/login_system/logout" type="button">Logout</a>
+  </div>
   </body>
 </html>
