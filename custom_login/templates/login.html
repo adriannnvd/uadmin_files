@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Quote of the Day</title>
+    
+  </head>
+  <body>
+    <div class="login-page">
+        <div class="login-form">
+            <div class="login-icon">
+                <img src="/static/img/icon_login.png" width="100" height="100">
+            </div>
+            <div class="login-inputs">
+                <form method="POST">
+
+                    <input class="uname-input" required type="text" name="username" placeholder=" Username" value="{{.Username}}"><br>
+                    <input class="pword-input" required type="password" name="password" placeholder=" Password" value="{{.Password}}"><br>
+              
+                    <!-- {{if .OTPRequired}}
+                    <input class="otp-input" type="text" name="otp" placeholder="OTP"><br>
+                    {{end}} -->
+                    
+                        <button class="login-btn" type="submit">LOGIN</button>
+              
+                </form>
+              
+                {{if .ErrExists}}
+                <p>
+                <br><b style="color:white">{{.Err}}</b><br>
+                </p>
+                {{end}}
+
+            </div>
+            
+        </div>
+    </div>
+    
+  </body>
+</html>
