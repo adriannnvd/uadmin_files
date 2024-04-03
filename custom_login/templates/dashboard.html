@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Quote of the Day</title>
+    
+  </head>
+  <body>
+    <div class="dashboard">
+        <div class="search">
+            <i class="fa-solid fa-arrow-left" ></i>
+            <i class="fa-solid fa-arrow-right" ></i>
+            <i class="fa-solid fa-rotate-right" ></i>
+            <div class="searchbar">
+                <i class="fa-solid fa-lock" ></i>
+                <div class="textfield">
+                    <p>www.quotesoftheday.com</p>
+                </div>
+                <i class='bx bx-zoom-out'></i>
+                <i class="fa-regular fa-share-from-square" ></i>
+                <i class="fa-regular fa-star" ></i>
+            </div>
+        </div>
+        <div class="text">
+            <p>daily motivation.</p>
+        </div>
+        <div class="quotes">
+            <div class="welcome">
+                <p>Welcome <span>{{.User}}</span></p>
+                <p>Here is your Quote of the Day!!</p>
+            </div>
+            <div class="quotes-content">
+                <div class="content1">
+                    <div class="author-img">
+                       <img  src="/static/img/author.png" alt="" > 
+                    </div>
+                    
+                    <div class="author">
+                        <p>John Doe</p>
+                    </div>
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+                <div class="content2">
+                    <div class="daily-quote">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna 
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                         </p>
+                    </div>
+                    <div class="hashtags">
+                        <p>#motivation #quoteoftheday</p>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="content3">
+                    <div class="part1">
+                        <div class="like">
+                            <i class="fa-regular fa-heart i-heart"></i>
+                            <p>9k</p>
+                        </div>
+                        <div class="comment">
+                            <i class="fa-regular fa-comment i-comment"></i>
+                            <p>25</p>
+                        </div>
+                        <div class="repost">
+                            <i class='bx bx-repost i-repost' ></i>
+                            <p>50</p>
+                        </div>
+                    </div>
+                    <div class="part2">
+                        <div class="save">
+                            <i class="fa-regular fa-bookmark i-bookmark" ></i>
+                        </div>
+                    </div>      
+                </div>
+            </div>
+        </div>
+        <div class="logout">
+            <a class="logout-btn" href="/login/logout" type="button">LOGOUT</a>
+        </div>
+        
+    </div>
+    
+  </body>
+  <script src="https://kit.fontawesome.com/d595b5fd34.js" crossorigin="anonymous"></script>
+</html>

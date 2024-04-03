@@ -5,9 +5,8 @@ import (
 
 	"github.com/uadmin/uadmin"
 
+	"github.com/adriannnvd/uadmin_files/custom_login/models"
 	"github.com/adriannnvd/uadmin_files/custom_login/views"
-
-	
 )
 
 func main() {
@@ -15,6 +14,10 @@ func main() {
 	// NOTE: This code works only if database does not exist yet.
 	uadmin.RootURL = "/admin/"
 	uadmin.SiteName = "Custom Login System"
+
+	uadmin.Register(
+		models.Quotes{},
+	)
 
 	http.HandleFunc("/login/", uadmin.Handler(views.MainHandler))
 
