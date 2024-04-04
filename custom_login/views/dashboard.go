@@ -3,22 +3,33 @@ package views
 import (
 	"net/http"
 
+	"math/rand"
+	"time"
+
+	"github.com/adriannnvd/uadmin_files/custom_login/models"
 	"github.com/uadmin/uadmin"
 )
 
 func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Session) {
 
 	type Context struct {
-        User        string
-    }
+		User  string
+		Quote models.Quotes
+	}
 
-    // Call the custom struct and assign the full name in the User field under the context object.
-    c := Context{}
-    c.User = session.User.FirstName + " " + session.User.LastName
+	// Call the custom struct and assign the full name in the User field under the context object.
+	c := Context{}
+	// uadmin.Trail(uadmin.DEBUG, "session USER: "+session.User.FirstName+" "+session.User.LastName)
+	c.User = session.User.FirstName + " " + session.User.LastName
 
+	// Seed the random number generator
+	rand.Seed(time.Now().UnixNano())
 
-    // Render the home filepath and pass the context data object to the HTML file.
-    uadmin.RenderHTML(w, r, "templates/home.html", c)
-    return
+	// Generate a random number between 1 and 50
+	randomNumber := rand.Intn(9) + 1
 
+	uadmin.Get(&c.Quote, "id = ?", randomNumber)
+
+	// Render the home filepath and pass the context data object to the HTML file.
+	uadmin.RenderHTML(w, r, "templates/dashboard.html", c)
 }

@@ -8,6 +8,9 @@ import (
 type Quotes struct {
 	uadmin.Model
 	Name    string
-	Quote   string `uadmin:"html"`
+	Quote   string
 	Picture string `uadmin:"image"`
+	Like    string
+	Comment string
+	Repost  string
 }

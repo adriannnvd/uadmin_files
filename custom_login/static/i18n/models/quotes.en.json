@@ -8,8 +8,22 @@
       "err_msg": {},
       "Choices": {}
     },
+    "Comment": {
+      "display_name": "Comment",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "ID": {
       "display_name": "ID",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Like": {
+      "display_name": "Like",
       "help": "",
       "pattern_msg": "",
       "err_msg": {},
@@ -31,6 +45,13 @@
     },
     "Quote": {
       "display_name": "Quote",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Repost": {
+      "display_name": "Repost",
       "help": "",
       "pattern_msg": "",
       "err_msg": {},

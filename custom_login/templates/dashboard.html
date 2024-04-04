@@ -36,25 +36,17 @@
             <div class="quotes-content">
                 <div class="content1">
                     <div class="author-img">
-                       <img  src="/static/img/author.png" alt="" > 
+                       <img  src={{.Quote.Picture}} alt="" > 
                     </div>
                     
                     <div class="author">
-                        <p>John Doe</p>
+                        <p>{{ .Quote.Name }}</p>
                     </div>
                     <i class="fa-solid fa-ellipsis"></i>
                 </div>
                 <div class="content2">
                     <div class="daily-quote">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna 
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna 
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                         </p>
+                        <p>{{ .Quote.Quote }}</p>
                     </div>
                     <div class="hashtags">
                         <p>#motivation #quoteoftheday</p>
@@ -65,15 +57,15 @@
                     <div class="part1">
                         <div class="like">
                             <i class="fa-regular fa-heart i-heart"></i>
-                            <p>9k</p>
+                            <p>{{.Quote.Like}}</p>
                         </div>
                         <div class="comment">
                             <i class="fa-regular fa-comment i-comment"></i>
-                            <p>25</p>
+                            <p>{{.Quote.Comment}}</p>
                         </div>
                         <div class="repost">
                             <i class='bx bx-repost i-repost' ></i>
-                            <p>50</p>
+                            <p>{{.Quote.Repost}}</p>
                         </div>
                     </div>
                     <div class="part2">
@@ -85,7 +77,9 @@
             </div>
         </div>
         <div class="logout">
-            <a class="logout-btn" href="/login/logout" type="button">LOGOUT</a>
+            <form method="GET" action="/logout/">
+                <button class="logout-btn" type="submit">LOGOUT</button>
+            </form>
         </div>
         
     </div>

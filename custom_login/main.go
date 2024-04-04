@@ -19,7 +19,10 @@ func main() {
 		models.Quotes{},
 	)
 
-	http.HandleFunc("/login/", uadmin.Handler(views.MainHandler))
+	// http.HandleFunc("/login/", uadmin.Handler(views.MainHandler))
+	// http.HandleFunc("/dashboard/", uadmin.Handler(views.DashboardHandler))
+	http.HandleFunc("/", uadmin.Handler(views.MainHandler))
+	// http.HandleFunc("/logout/", uadmin.Handler(views.LogoutHandler))
 
 	// Run the server
 	uadmin.StartServer()
