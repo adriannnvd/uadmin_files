@@ -96,21 +96,147 @@ input {
     border-radius: 10px;
     color: white;
     text-decoration: none;
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
+
+.logout-btn:hover, .login-btn:hover {
+    background:#0e6896 ;
+    color: #e2f2fc;
+    transform: scale(1.1);
+}
+
+.quotes-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e2f2fc;
+    height: 45px;
+    width: 300px;
+    border: 1px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.quotes-btn:hover {
+    background: #0e6896;
+
+}
+
 
 
 /* div {
     border: 1px solid black;
 } */
 
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #7698B6;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #0e6896;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color:#e2f2fc
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: -6px;
+    right: 12px;
+    font-size: 45px;
+    margin-left: 50px;
+  }
+
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+
+
+  .nav-logo img {
+    width: 240px;
+    height: 170px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .quotes-type {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 20px;
+}
+
+
+.header {
+    height: 6vh;
+    background: #0d2f44;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    align-items: center;
+
+}
+
+.sidebar-buttons {
+    height: 77%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+
+.open-nav-btn button {
+    height: 2rem;
+    width: 2rem;
+    
+}
+
+.welcome {
+    color: #0e6896;
+    font-size: 1.25rem;
+}
+
+.welcome span {
+    color: #e2f2fc;
+    font-size: 1.25rem;
+ }
 
 .dashboard {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    height: 100vh;
-    flex-direction: column;
+    height: 94vh;
     background-image: url(/static/img/quotes_bg.png);
     background-position: center;
     background-size: cover;
@@ -150,6 +276,9 @@ input {
 }
 
 .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 30px;
     font-size: 3.5rem;
     color:#0d2f44;
@@ -171,7 +300,7 @@ input {
     
 }
 
-.welcome {
+.here {
     font-size: 1.25rem;
     color: #0d2f44;
     display: flex;
@@ -179,10 +308,7 @@ input {
     margin-right: 25rem;
 }
 
-.welcome span {
-   color: #e2f2fc;
-    font-size: 1.25rem;
-}
+
 
 .quotes-content {
     height: auto;
@@ -199,15 +325,34 @@ input {
 
 .content1 {
     display: flex;
-    justify-content: center;
-    gap: 5px;
+    justify-content: space-between;
+    width: 100%;
+    
 }
 
+.part1-content1, .part2-content1 {
+    display: flex;
+    gap: 10px;
+}
+
+.time p {
+    font-size: .75rem;
+    display: inline-block;
+    
+}
+.part1-content1 {
+    padding-left: 50px;
+}
+
+.part2-content1 {
+    padding-right: 50px;
+}
+
+
 .author {
-   
     display: flex;
     align-items: center;
-    width: 480px;
+    width: auto;
 }
 
 .author-img {
@@ -233,6 +378,18 @@ p {
     font-size: 1.25;
 }
 
+.time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+.ellipsis {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .hashtags p {
     color: #0e6896;
 }
@@ -242,7 +399,7 @@ p {
     width: 575px;
     justify-content: center;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
 .daily-quote {
@@ -295,6 +452,17 @@ p {
     font-size: 20px;
 }
 
+.i-heart, .i-bookmark, .i-star{
+    cursor: pointer;
+    
+}
+
+.i-heart:hover, .i-bookmark:hover, .i-star:hover{
+    transform: scale(1.2);
+}
+
+
+
 .i-repost{
     color: #0d2f44;
     font-size: 25px;
@@ -305,7 +473,11 @@ p {
     font-size: 30px;
 }
 
-.logout {
-    margin-left: 42rem;
-    margin-top: 2rem;
+.filled-heart {
+    color: red;
 }
+
+.filled-star .filled-bookmark{
+    color: #0d2f44;
+}
+
