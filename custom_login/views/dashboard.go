@@ -13,17 +13,24 @@ import (
 func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Session) {
 
 	type Context struct {
-		User  string
-		Quote models.Quotes
-		Time  string
-		Date  string
+		User               string
+		RandomQuote        models.RandomQuotes
+		MotivationalQuote  models.MotivationalQuotes
+		InspirationalQuote models.InspirationalQuotes
+		PerceveranceQuote  models.PerceveranceQuotes
+		LoveQuote          models.LoveQuotes
+		EncouragementQuote models.EncouragementQuotes
+		Time               string
+		Date               string
 	}
 
 	// Call the custom struct and assign the full name in the User field under the context object.
 	c := Context{}
-	// uadmin.Trail(uadmin.DEBUG, "session USER: "+session.User.FirstName+" "+session.User.LastName)
+
+	// Getting the user firstname and lastname
 	c.User = session.User.FirstName + " " + session.User.LastName
 
+	// getting the current time
 	currentTime := time.Now()
 
 	// Format time in AM/PM format
@@ -32,18 +39,56 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 	// Format date in MM/DD/YYYY format
 	c.Date = currentTime.Format("01/02/2006")
 
-	// Print time in AM/PM format
+	// Count and Get the Quote in models
+	// For Random Quotes
+	randomQuotes := []models.RandomQuotes{}
 
-	// If you want to assign these values to variables
+	randomCount := uadmin.Count(&randomQuotes, "id > 0")
+	uadmin.Trail(uadmin.DEBUG, "randomCount: %v\n", randomCount)
+	uadmin.Get(&c.RandomQuote, "id = ?", randomizeNumber(randomCount))
 
-	// Seed the random number generator
-	rand.Seed(time.Now().UnixNano())
+	//For Inspirational Quotes
+	inspirationalQuotes := []models.InspirationalQuotes{}
 
-	// Generate a random number between 1 and 50
-	randomNumber := rand.Intn(9) + 1
+	inspirationalCount := uadmin.Count(&inspirationalQuotes, "id > 0")
+	uadmin.Trail(uadmin.DEBUG, "motivationalCount: %v\n", inspirationalCount)
+	uadmin.Get(&c.InspirationalQuote, "id = ?", randomizeNumber(inspirationalCount))
 
-	uadmin.Get(&c.Quote, "id = ?", randomNumber)
+	// For Motivational Quotes
+	motivationalQuotes := []models.MotivationalQuotes{}
+
+	motivationalCount := uadmin.Count(&motivationalQuotes, "id > 0")
+	uadmin.Trail(uadmin.DEBUG, "motivationalCount: %v\n", motivationalCount)
+	uadmin.Get(&c.MotivationalQuote, "id = ?", randomizeNumber(motivationalCount))
+
+	// For Love Quotes
+	loveQuotes := []models.LoveQuotes{}
+
+	loveCount := uadmin.Count(&loveQuotes, "id > 0")
+	uadmin.Trail(uadmin.DEBUG, "motivationalCount: %v\n", loveCount)
+	uadmin.Get(&c.LoveQuote, "id = ?", randomizeNumber(loveCount))
+
+	// For Perceverance Quotes
+	perceveranceQuotes := []models.LoveQuotes{}
+
+	perceveranceCount := uadmin.Count(&perceveranceQuotes, "id > 0")
+	uadmin.Trail(uadmin.DEBUG, "motivationalCount: %v\n", perceveranceCount)
+	uadmin.Get(&c.PerceveranceQuote, "id = ?", randomizeNumber(perceveranceCount))
+
+		// For Encouragement Quotes
+		encouragementQuotes := []models.LoveQuotes{}
+
+		encouragementCount := uadmin.Count(&encouragementQuotes, "id > 0")
+		uadmin.Trail(uadmin.DEBUG, "motivationalCount: %v\n", encouragementCount)
+		uadmin.Get(&c.EncouragementQuote, "id = ?", randomizeNumber(encouragementCount))
 
 	// Render the home filepath and pass the context data object to the HTML file.
 	uadmin.RenderHTML(w, r, "templates/dashboard.html", c)
+}
+
+func randomizeNumber(number int) int {
+	// Generate a random number between 0 and the given number
+	randomized := rand.Intn(number) + 1
+
+	return randomized
 }

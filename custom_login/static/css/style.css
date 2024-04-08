@@ -107,11 +107,12 @@ input {
     transform: scale(1.1);
 }
 
-.quotes-btn {
+.quotes-type a {
     display: flex;
     justify-content: center;
     align-items: center;
     background: #e2f2fc;
+    text-align: center;
     height: 45px;
     width: 300px;
     border: 1px;
@@ -119,11 +120,10 @@ input {
     text-decoration: none;
 }
 
-.quotes-btn:hover {
+.quotes-type a:hover ,.quotes-type a.active {
     background: #0e6896;
-
+    color: #e2f2fc;   
 }
-
 
 
 /* div {
@@ -156,7 +156,7 @@ input {
   
   /* When you mouse over the navigation links, change their color */
   .sidenav a:hover {
-    color:#e2f2fc
+    color:#e2f2fc;
   }
   
   /* Position and style the close button (top right corner) */
@@ -176,7 +176,7 @@ input {
 
   .nav-logo img {
     width: 240px;
-    height: 170px;
+    height: 155px;
   }
 
   .nav-logo {
@@ -305,7 +305,8 @@ input {
     color: #0d2f44;
     display: flex;
     flex-direction: column;
-    margin-right: 25rem;
+    margin-right: 16rem;
+    width: 420px;
 }
 
 

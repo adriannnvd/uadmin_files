@@ -28,20 +28,5 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Not Found"))
 	}
 
-	// // Authentication : This session is preloaded with a user.
 
-	// if r.URL.Path == "/dashboard" {
-	// 	// DasboardHandler handles the dashboard page.
-	// 	DashboardHandler(w, r, session)
-	// 	return
-	// } else
-	// if r.URL.Path == "/logout" {
-	// 	/* If the request URL Path is /logout after the /login_system/, it will proceed to this part.
-	// 	   e.g. localhost:8080/login_system/logout */
-
-	// 	// LogoutHandler handles the logout process for the user.
-	// 	LogoutHandler(w, r, session)
-	// 	return
-
-	// }
 }

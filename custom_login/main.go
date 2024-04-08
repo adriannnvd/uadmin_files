@@ -16,7 +16,12 @@ func main() {
 	uadmin.SiteName = "Custom Login System"
 
 	uadmin.Register(
-		models.Quotes{},
+		models.RandomQuotes{},
+		models.InspirationalQuotes{},
+		models.MotivationalQuotes{},
+		models.LoveQuotes{},
+		models.PerceveranceQuotes{},
+		models.EncouragementQuotes{},
 	)
 
 	// http.HandleFunc("/login/", uadmin.Handler(views.MainHandler))

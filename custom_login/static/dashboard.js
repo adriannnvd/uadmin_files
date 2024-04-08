@@ -45,6 +45,21 @@ document.querySelector("#bookmark").addEventListener("click", function() {
     document.body.style.backgroundColor = "white";
   }
 
+  //CHANGING THE ACTIVE BUTTON FOR SIDEBAR BUTTONS
+var btnContainer = document.getElementById("quotes-type");
+
+var btns = btnContainer.getElementsByClassName("quotes-btn");
+
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+
+    this.className += " active";
+  });
+}
+
+
 
   
   

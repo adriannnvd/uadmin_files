@@ -27,26 +27,16 @@
                 <img src="/static/img/login_logo.png" >
             </div>
             <div class="sidebar-buttons">
-                <div class="quotes-type">
-                    <div class="quotes-btn">
-                        <a href="#">Random Quotes</a>
-                    </div>
-                    <div class="quotes-btn">
-                        <a href="#">Inspirational Quotes</a>
-                    </div>
-                    <div class="quotes-btn">
-                        <a href="#">Motivational Quotes</a>
-                    </div>
-                    <div class="quotes-btn">
-                        <a href="#">Love Quotes</a>
-                    </div>
-                    <div class="quotes-btn">
-                        <a href="#">Percevearance Quotes</a>
-                    </div>
-                    <div class="quotes-btn">
-                        <a href="#">Encouragement Quotes</a>
-                    </div>
+        
+                <div class="quotes-type" id="quotes-type">
+                        <a class="quotes-btn active" onclick="showRandomQuotes();" >Random Quotes</a>
+                        <a class="quotes-btn" onclick="showInspirationalQuotes();">Inspirational Quotes</a>
+                        <a class="quotes-btn" onclick="showMotivationalQuotes();">Motivational Quotes</a>
+                        <a class="quotes-btn" onclick="showLoveQuotes();">Love Quotes</a>
+                        <a class="quotes-btn" onclick="showPerceveranceQuotes();">Perceverance Quotes</a>
+                        <a class="quotes-btn" onclick="showEncouragementQuotes();">Encouragement Quotes</a>
                 </div>
+                
                 <div class="logout">
                     <form method="GET" action="/logout/">
                         <button class="logout-btn" type="submit">LOGOUT</button>
@@ -64,7 +54,7 @@
                 <div class="searchbar">
                     <i class="fa-solid fa-lock" ></i>
                     <div class="textfield">
-                        <p>www.quotesoftheday.com</p>
+                        <p class="search-text">www.quotesoftheday.com</p>
                     </div>
                     <i class='bx bx-zoom-out'></i>
                     <i class="fa-regular fa-share-from-square" ></i>
@@ -76,16 +66,16 @@
             </div>
             <div class="quotes">
                 <div class="here">
-                    <p>Here is your Quote of the Day!!</p>
+                    <p class="description">Here is your Random Quote of the Day!!</p>
                 </div>
                 <div class="quotes-content">
                     <div class="content1">
                         <div class="part1-content1">
                             <div class="author-img">
-                                <img  src={{.Quote.Picture}} alt="" > 
+                                <img class="author-profile" src={{.RandomQuote.Picture}} alt="" > 
                              </div>
                              <div class="author">
-                                 <p>{{ .Quote.Name }}</p>
+                                 <p class="quote-author">{{ .RandomQuote.Author }}</p>
                              </div>
                         </div>
                         <div class="part2-content1">
@@ -101,10 +91,10 @@
                     </div>
                     <div class="content2">
                         <div class="daily-quote">
-                            <p>{{ .Quote.Quote }}</p>
+                            <p class="my-quote">{{ .RandomQuote.Quote }}</p>
                         </div>
                         <div class="hashtags">
-                            <p>#motivation #quoteoftheday</p>
+                            <p class="my-hashtags">#quoteoftheday #randomquotes</p>
                         </div>
                     </div>
                     <div class="divider"></div>
@@ -112,15 +102,15 @@
                         <div class="part1">
                             <div class="like">
                                 <i class="fa-regular fa-heart i-heart" id="heart"></i>
-                                <p>{{.Quote.Like}}</p>
+                                <p class="quote-like">{{.RandomQuote.Like}}</p>
                             </div>
                             <div class="comment">
                                 <i class="fa-regular fa-comment i-comment"></i>
-                                <p>{{.Quote.Comment}}</p>
+                                <p class="quote-comment">{{.RandomQuote.Comment}}</p>
                             </div>
                             <div class="repost">
                                 <i class='bx bx-repost i-repost' ></i>
-                                <p>{{.Quote.Repost}}</p>
+                                <p class="quote-repost">{{.RandomQuote.Repost}}</p>
                             </div>
                         </div>
                         <div class="part2">
@@ -139,6 +129,74 @@
     
   <script src="https://kit.fontawesome.com/d595b5fd34.js" crossorigin="anonymous"></script>
   <script src="/static/dashboard.js"></script>
+  <script>
+    function showRandomQuotes() {
+        document.querySelector(".search-text").textContent = "www.quotesoftheday.com/random_quotes";
+        document.querySelector(".description").textContent = "Here is your Random Quote of the Day!!";
+        document.querySelector(".author-profile").setAttribute('src','{{ .RandomQuote.Picture}}');
+        document.querySelector(".quote-author").textContent = "{{ .RandomQuote.Author }}";
+        document.querySelector(".my-quote").textContent = "{{ .RandomQuote.Quote }}";
+        document.querySelector(".my-hashtags").textContent = "#quoteoftheday #randomquotes";
+        document.querySelector(".quote-like").textContent = "{{ .RandomQuote.Like }}";
+        document.querySelector(".quote-comment").textContent = "{{ .RandomQuote.Comment }}";
+        document.querySelector(".quote-repost").textContent = "{{ .RandomQuote.Repost }}";  
+    }
+    function showInspirationalQuotes() {
+        document.querySelector(".search-text").textContent = "www.quotesoftheday.com/inspirational_quotes";
+        document.querySelector(".description").textContent = "Here is your Inspirational Quote of the Day!!";
+        document.querySelector(".author-profile").setAttribute('src','{{ .InspirationalQuote.Picture}}');
+        document.querySelector(".quote-author").textContent = "{{ .InspirationalQuote.Author }}";
+        document.querySelector(".my-quote").textContent = "{{ .InspirationalQuote.Quote }}";
+        document.querySelector(".my-hashtags").textContent = "#quoteoftheday #inspirationalquotes";
+        document.querySelector(".quote-like").textContent = "{{ .InspirationalQuote.Like }}";
+        document.querySelector(".quote-comment").textContent = "{{ .InspirationalQuote.Comment }}";
+        document.querySelector(".quote-repost").textContent = "{{ .InspirationalQuote.Repost }}";  
+    }
+    function showMotivationalQuotes() {
+        document.querySelector(".search-text").textContent = "www.quotesoftheday.com/motivational_quotes";
+        document.querySelector(".description").textContent = "Here is your Motivational Quote of the Day!!";
+        document.querySelector(".author-profile").setAttribute('src','{{ .MotivationalQuote.Picture}}');
+        document.querySelector(".quote-author").textContent = "{{ .MotivationalQuote.Author }}";
+        document.querySelector(".my-quote").textContent = "{{ .MotivationalQuote.Quote }}";
+        document.querySelector(".my-hashtags").textContent = "#quoteoftheday #motivationalquotes";
+        document.querySelector(".quote-like").textContent = "{{ .MotivationalQuote.Like }}";
+        document.querySelector(".quote-comment").textContent = "{{ .MotivationalQuote.Comment }}";
+        document.querySelector(".quote-repost").textContent = "{{ .MotivationalQuote.Repost }}";  
+    }
+    function showLoveQuotes() {
+        document.querySelector(".search-text").textContent = "www.quotesoftheday.com/love_quotes";
+        document.querySelector(".description").textContent = "Here is your Love Quote of the Day!!";
+        document.querySelector(".author-profile").setAttribute('src','{{ .LoveQuote.Picture}}');
+        document.querySelector(".quote-author").textContent = "{{ .LoveQuote.Author }}";
+        document.querySelector(".my-quote").textContent = "{{ .LoveQuote.Quote }}";
+        document.querySelector(".my-hashtags").textContent = "#quoteoftheday #lovequotes";
+        document.querySelector(".quote-like").textContent = "{{ .LoveQuote.Like }}";
+        document.querySelector(".quote-comment").textContent = "{{ .LoveQuote.Comment }}";
+        document.querySelector(".quote-repost").textContent = "{{ .LoveQuote.Repost }}";  
+    }
+    function showPerceveranceQuotes() {
+        document.querySelector(".search-text").textContent = "www.quotesoftheday.com/perceverance_quotes";
+        document.querySelector(".description").textContent = "Here is your Perceverance Quote of the Day!!";
+        document.querySelector(".author-profile").setAttribute('src','{{ .PerceveranceQuote.Picture}}');
+        document.querySelector(".quote-author").textContent = "{{ .PerceveranceQuote.Author }}";
+        document.querySelector(".my-quote").textContent = "{{ .LoveQuote.Quote }}";
+        document.querySelector(".my-hashtags").textContent = "#quoteoftheday #perceverancequotes";
+        document.querySelector(".quote-like").textContent = "{{ .PerceveranceQuote.Like }}";
+        document.querySelector(".quote-comment").textContent = "{{ .PerceveranceQuote.Comment }}";
+        document.querySelector(".quote-repost").textContent = "{{ .PerceveranceQuote.Repost }}";  
+    }
+    function showEncouragementQuotes() {
+        document.querySelector(".search-text").textContent = "www.quotesoftheday.com/encouragement_quotes";
+        document.querySelector(".description").textContent = "Here is your Encouragement Quote of the Day!!";
+        document.querySelector(".author-profile").setAttribute('src','{{ .EncouragementQuote.Picture}}');
+        document.querySelector(".quote-author").textContent = "{{ .EncouragementQuote.Author }}";
+        document.querySelector(".my-quote").textContent = "{{ .EncouragementQuote.Quote }}";
+        document.querySelector(".my-hashtags").textContent = "#quoteoftheday #encuaragementquotes";
+        document.querySelector(".quote-like").textContent = "{{ .EncouragementQuote.Like }}";
+        document.querySelector(".quote-comment").textContent = "{{ .EncouragementQuote.Comment }}";
+        document.querySelector(".quote-repost").textContent = "{{ .EncouragementQuote.Repost }}";  
+    }
+  </script>
   </body>
   
     
