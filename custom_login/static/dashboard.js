@@ -1,35 +1,35 @@
-//filled heart
-document.querySelector("#heart").addEventListener("click", function() {
-    if (this.classList.contains("filled-heart")) {
-      this.classList.remove("filled-heart");
-      this.classList.remove("fa-solid");
-    } else {
-      this.classList.add("filled-heart");
-      this.classList.add("fa-solid");
-    }
-  });
+// //filled heart
+// document.querySelector("#heart").addEventListener("click", function() {
+//     if (this.classList.contains("filled-heart")) {
+//       this.classList.remove("filled-heart");
+//       this.classList.remove("fa-solid");
+//     } else {
+//       this.classList.add("filled-heart");
+//       this.classList.add("fa-solid");
+//     }
+//   });
 
-  //filled star
-document.querySelector("#star").addEventListener("click", function() {
-  if (this.classList.contains("filled-star")) {
-    this.classList.remove("filled-star");
-    this.classList.remove("fa-solid");
-  } else {
-    this.classList.add("filled-star");
-    this.classList.add("fa-solid");
-  }
-});
+//   //filled star
+// document.querySelector("#star").addEventListener("click", function() {
+//   if (this.classList.contains("filled-star")) {
+//     this.classList.remove("filled-star");
+//     this.classList.remove("fa-solid");
+//   } else {
+//     this.classList.add("filled-star");
+//     this.classList.add("fa-solid");
+//   }
+// });
 
-//filled heart
-document.querySelector("#bookmark").addEventListener("click", function() {
-  if (this.classList.contains("filled-bookmark")) {
-    this.classList.remove("filled-bookmark");
-    this.classList.remove("fa-solid");
-  } else {
-    this.classList.add("filled-bookmark");
-    this.classList.add("fa-solid");
-  }
-});
+// //filled heart
+// document.querySelector("#bookmark").addEventListener("click", function() {
+//   if (this.classList.contains("filled-bookmark")) {
+//     this.classList.remove("filled-bookmark");
+//     this.classList.remove("fa-solid");
+//   } else {
+//     this.classList.add("filled-bookmark");
+//     this.classList.add("fa-solid");
+//   }
+// });
 
 
   //sidebar navigation
@@ -60,7 +60,49 @@ for (var i = 0; i < btns.length; i++) {
 }
 
 
+// document.querySelector("#quotes-btn").addEventListener("click", function() {
+//   var heartIcon = document.getElementById("heart");
+//   if (heartIcon.classList.contains("fa-regular")) {
+//       heartIcon.classList.remove("fa-regular");
+//       heartIcon.classList.add("fa-solid");
+//   } else {
+//       heartIcon.classList.remove("fa-solid");
+//       heartIcon.classList.add("fa-regular");
+//   }
+// });
 
-  
-  
-  
+// Zoom Authot Profile
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById("modal-image");
+const zoomableImg = document.querySelector('.zoomable-image');
+const closeBtn = document.getElementsByClassName("close")[0];
+
+zoomableImg.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+}
+
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+// Reveal 
+// function Reveal() {
+//   var div = document.getElementById('quotes-cover');
+//   div.style.display = 'none';
+// }
+
+function Reveal() {
+var div = document.getElementById('quotes-cover');
+  div.style.opacity = '0'; 
+  setTimeout(function() {
+    div.style.display = 'none';
+  }, 500);
+} 
