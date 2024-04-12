@@ -93,16 +93,51 @@ window.onclick = function(event) {
 }
 
 
-// Reveal 
-// function Reveal() {
-//   var div = document.getElementById('quotes-cover');
-//   div.style.display = 'none';
+
+var div = document.getElementById('quotes-cover');
+
+div.style.display = 'flex';
+div.style.opacity = '1';
+
+setTimeout(function() {
+    div.style.opacity = '0';
+    
+    setTimeout(function() {
+        div.style.display = 'none';
+    }, 1000);
+}, 2000);
+
+
+function hideAndReveal() {
+  var div = document.getElementById('quotes-cover');
+
+        div.style.display = 'flex';
+        div.style.opacity = '1';
+
+        setTimeout(function() {
+            div.style.opacity = '0';
+            
+            setTimeout(function() {
+                div.style.display = 'none';
+            }, 500);
+        }, 2000);
+}
+
+// function doLoader() {
+//   myVar = setTimeout(showPage, 3000);
 // }
 
-function Reveal() {
-var div = document.getElementById('quotes-cover');
-  div.style.opacity = '0'; 
-  setTimeout(function() {
-    div.style.display = 'none';
-  }, 500);
-} 
+// function showPage() {
+//   var div = document.getElementById('quotes-cover');
+
+// div.style.display = 'flex';
+// div.style.opacity = '1';
+
+// setTimeout(function() {
+//     div.style.opacity = '0';
+    
+//     setTimeout(function() {
+//         div.style.display = 'none';
+//     }, 1000);
+// }, 2000);
+// }
