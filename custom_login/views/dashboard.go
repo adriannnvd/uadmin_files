@@ -45,50 +45,71 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 
 	randomCount := uadmin.Count(&randomQuotes, "id > 1")
 	// uadmin.Trail(uadmin.DEBUG, "randomCount: %v\n", randomCount)
-	uadmin.Get(&c.RandomQuote, "id = ?", randomizeNumber(randomCount))
+	randomMinID := 2
+	randomMaxID := randomCount
+	randomID := randomizeNumber(randomMinID, randomMaxID)
+	uadmin.Get(&c.RandomQuote, "id = ?", randomID)
 
 	//For Inspirational Quotes
 	inspirationalQuotes := []models.InspirationalQuotes{}
 
 	inspirationalCount := uadmin.Count(&inspirationalQuotes, "id > 0")
-	// uadmin.Trail(uadmin.DEBUG, "motivationalCount: %v\n", inspirationalCount)
-	uadmin.Get(&c.InspirationalQuote, "id = ?", randomizeNumber(inspirationalCount))
+	// uadmin.Trail(uadmin.DEBUG, "inspirationalCount: %v\n", inspirationalCount)
+	inspirationalMinID := 1
+	inspirationalMaxID := inspirationalCount
+	inspirationalID := randomizeNumber(inspirationalMinID, inspirationalMaxID)
+	uadmin.Get(&c.InspirationalQuote, "id = ?", inspirationalID)
 
 	// For Motivational Quotes
 	motivationalQuotes := []models.MotivationalQuotes{}
 
 	motivationalCount := uadmin.Count(&motivationalQuotes, "id > 0")
 	// uadmin.Trail(uadmin.DEBUG, "motivationalCount: %v\n", motivationalCount)
-	uadmin.Get(&c.MotivationalQuote, "id = ?", randomizeNumber(motivationalCount))
+	motivationalMinID := 1
+	motivationalMaxID := motivationalCount
+	motivationalID := randomizeNumber(motivationalMinID, motivationalMaxID)
+	uadmin.Get(&c.MotivationalQuote, "id = ?", motivationalID)
 
 	// For Love Quotes
 	loveQuotes := []models.LoveQuotes{}
 
 	loveCount := uadmin.Count(&loveQuotes, "id > 0")
-	// uadmin.Trail(uadmin.DEBUG, "motivationalCount: %v\n", loveCount)
-	uadmin.Get(&c.LoveQuote, "id = ?", randomizeNumber(loveCount))
+	// uadmin.Trail(uadmin.DEBUG, "loveCount: %v\n", loveCount)
+	loveMinID := 1
+	loveMaxID := loveCount
+	loveID := randomizeNumber(loveMinID, loveMaxID)
+	uadmin.Get(&c.LoveQuote, "id = ?", loveID)
 
 	// For Perceverance Quotes
 	perseveranceQuotes := []models.PerceveranceQuotes{}
 
 	perseveranceCount := uadmin.Count(&perseveranceQuotes, "id > 0")
-	// uadmin.Trail(uadmin.DEBUG, "motivationalCount: %v\n", perceveranceCount)
-	uadmin.Get(&c.PerceveranceQuote, "id = ?", randomizeNumber(perseveranceCount))
+	// uadmin.Trail(uadmin.DEBUG, "perseveranceCount: %v\n", perseveranceCount)
+	perseveranceMinID := 1
+	perseveranceMaxID := perseveranceCount
+	perseveranceID := randomizeNumber(perseveranceMinID, perseveranceMaxID)
+	uadmin.Get(&c.PerceveranceQuote, "id = ?", perseveranceID)
 
 	// For Encouragement Quotes
 	encouragementQuotes := []models.EncouragementQuotes{}
 
 	encouragementCount := uadmin.Count(&encouragementQuotes, "id > 0")
 	// uadmin.Trail(uadmin.DEBUG, "encouragementCount: %v\n", encouragementCount)
-	uadmin.Get(&c.EncouragementQuote, "id = ?", randomizeNumber(encouragementCount))
+	encouragementMinID := 1
+	encouragementMaxID := encouragementCount
+	encouragementID := randomizeNumber(encouragementMinID, encouragementMaxID)
+	uadmin.Get(&c.EncouragementQuote, "id = ?", encouragementID)
 
 	// Render the home filepath and pass the context data object to the HTML file.
 	uadmin.RenderHTML(w, r, "templates/dashboard.html", c)
 }
 
-func randomizeNumber(number int) int {
-	// Generate a random number between 0 and the given number
-	randomized := rand.Intn(number) + 1
+// randomizeNumber generates a random number within the specified range [min, max].
+func randomizeNumber(min, max int) int {
 
-	return randomized
+	// Generate a random number within the specified range.
+
+	randmized := rand.Intn(max-min+1) + min
+
+	return randmized
 }
