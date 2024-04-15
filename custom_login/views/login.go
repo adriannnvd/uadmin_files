@@ -11,11 +11,10 @@ import (
 func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	// Initialize the fields that we need in the custom struct.
 	type Context struct {
-		Err         string
-		ErrExists   bool
-		OTPRequired bool
-		Username    string
-		Password    string
+		Err       string
+		ErrExists bool
+		Username  string
+		Password  string
 	}
 	// Call the Context struct.
 	c := Context{}
@@ -26,10 +25,9 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		username := r.PostFormValue("username")
 		username = strings.TrimSpace(strings.ToLower(username))
 		password := r.PostFormValue("password")
-		otp := r.PostFormValue("otp")
 
-		// Login2FA login using username, password and otp for users with OTPRequired = true.
-		session := uadmin.Login2FA(r, username, password, otp)
+		// Login login using username, password.
+		session, _ := uadmin.Login(r, username, password)
 
 		// Check whether the session returned is nil or the user is not active.
 		if session == nil || !session.User.Active {
@@ -52,20 +50,8 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 			cookie.SameSite = http.SameSiteStrictMode
 			http.SetCookie(w, cookie)
 
-			// DashboardHandler(w, r, session)
-
 			// Redirect to the page depending on the value of the next.
 			http.Redirect(w, r, "/dashboard/", http.StatusSeeOther)
-
-			// // If the next value is empty, redirect the page that omits the logout keyword in the last part.
-			// if r.URL.Query().Get("next") == "" {
-			// 	http.Redirect(w, r, strings.TrimSuffix(r.RequestURI, "logout"), http.StatusSeeOther)
-			// 	return
-			// }
-
-			// // Redirect to the page depending on the value of the next.
-			// http.Redirect(w, r, r.URL.Query().Get("next"), http.StatusSeeOther)
-			// return
 
 		}
 	}

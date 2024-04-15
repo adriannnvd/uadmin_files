@@ -17,7 +17,7 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 		RandomQuote        models.RandomQuotes
 		MotivationalQuote  models.MotivationalQuotes
 		InspirationalQuote models.InspirationalQuotes
-		PerceveranceQuote  models.PerseveranceQuotes
+		PerceveranceQuote  models.PerceveranceQuotes
 		LoveQuote          models.LoveQuotes
 		EncouragementQuote models.EncouragementQuotes
 		Time               string
@@ -69,7 +69,7 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 	uadmin.Get(&c.LoveQuote, "id = ?", randomizeNumber(loveCount))
 
 	// For Perceverance Quotes
-	perseveranceQuotes := []models.PerseveranceQuotes{}
+	perseveranceQuotes := []models.PerceveranceQuotes{}
 
 	perseveranceCount := uadmin.Count(&perseveranceQuotes, "id > 0")
 	// uadmin.Trail(uadmin.DEBUG, "motivationalCount: %v\n", perceveranceCount)

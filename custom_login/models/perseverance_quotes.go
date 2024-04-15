@@ -5,7 +5,7 @@ import (
 )
 
 // Perceverance Quotes Model !
-type PerseveranceQuotes struct {
+type PerceveranceQuotes struct {
 	uadmin.Model
 	Name    string `uadmin:"display_name:Type"`
 	Author  string
