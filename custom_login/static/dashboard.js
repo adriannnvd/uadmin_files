@@ -32,32 +32,32 @@
 // });
 
 
-  //sidebar navigation
-  function openNav() {
-    document.getElementById("mySidenav").style.width = "320px";
-    document.getElementById("main").style.marginLeft = "320px";
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-  }
+  // //sidebar navigation
+  // function openNav() {
+  //   document.getElementById("mySidenav").style.width = "320px";
+  //   document.getElementById("main").style.marginLeft = "320px";
+  //   document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  // }
   
-  function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-    document.body.style.backgroundColor = "white";
-  }
+  // function closeNav() {
+  //   document.getElementById("mySidenav").style.width = "0";
+  //   document.getElementById("main").style.marginLeft= "0";
+  //   document.body.style.backgroundColor = "white";
+  // }
 
   //CHANGING THE ACTIVE BUTTON FOR SIDEBAR BUTTONS
-var btnContainer = document.getElementById("quotes-type");
+// var btnContainer = document.getElementById("quotes-type");
 
-var btns = btnContainer.getElementsByClassName("quotes-btn");
+// var btns = btnContainer.getElementsByClassName("quotes-btn");
 
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
+// for (var i = 0; i < btns.length; i++) {
+//   btns[i].addEventListener("click", function() {
+//     var current = document.getElementsByClassName("active");
+//     current[0].className = current[0].className.replace(" active", "");
 
-    this.className += " active";
-  });
-}
+//     this.className += " active";
+//   });
+// }
 
 
 // document.querySelector("#quotes-btn").addEventListener("click", function() {
@@ -123,21 +123,128 @@ function hideAndReveal() {
         }, 2000);
 }
 
-// function doLoader() {
-//   myVar = setTimeout(showPage, 3000);
-// }
+document.addEventListener("DOMContentLoaded", function() {
+  // Get all buttons in the sidebar
+  const buttons = document.querySelectorAll(".quotes-btn");
 
-// function showPage() {
-//   var div = document.getElementById('quotes-cover');
+  // Function to handle button click
+  function handleButtonClick(event) {
+    // Remove active class from all buttons
+    buttons.forEach(btn => btn.classList.remove("active"));
 
-// div.style.display = 'flex';
-// div.style.opacity = '1';
+    // Add active class to the clicked button
+    event.target.classList.add("active");
 
-// setTimeout(function() {
-//     div.style.opacity = '0';
-    
-//     setTimeout(function() {
-//         div.style.display = 'none';
-//     }, 1000);
-// }, 2000);
-// }
+    // Store the ID of the clicked button in local storage
+    localStorage.setItem("activeButtonId", event.target.id);
+
+    // Call the appropriate function to display content based on the clicked button
+    // Assuming you have functions like showRandomQuotes(), showInspirationalQuotes(), etc.
+    // Adjust this part based on your actual implementation
+    switch (event.target.id) {
+      case "random-quotes-btn":
+        showRandomQuotes();
+        break;
+      case "inspirational-quotes-btn":
+        showInspirationalQuotes();
+        break;
+      case "motivational-quotes-btn":
+        showMotivationalQuotes();
+        break;
+      case "love-quotes-btn":
+        showLoveQuotes();
+        break;
+      case "perseverance-quotes-btn":
+        showPerseveranceQuotes();
+        break;
+      case "encouragement-quotes-btn":
+        showEncouragementQuotes();
+        break;
+      default:
+        // Handle default case if needed
+        break;
+    }
+  }
+
+  // Add event listeners to all buttons
+  buttons.forEach(button => {
+    button.addEventListener("click", handleButtonClick);
+  });
+
+  // Check if there's a stored active button ID and set it as active on page load
+  const activeButtonId = localStorage.getItem("activeButtonId");
+  if (activeButtonId) {
+    const activeButton = document.getElementById(activeButtonId);
+    if (activeButton) {
+      activeButton.classList.add("active");
+      
+      // Trigger the display of content corresponding to the last active button
+      // Assuming you have functions like showRandomQuotes(), showInspirationalQuotes(), etc.
+      // Adjust this part based on your actual implementation
+      switch (activeButtonId) {
+        case "random-quotes-btn":
+          showRandomQuotes();
+          break;
+        case "inspirational-quotes-btn":
+          showInspirationalQuotes();
+          break;
+        case "motivational-quotes-btn":
+          showMotivationalQuotes();
+          break;
+        case "love-quotes-btn":
+          showLoveQuotes();
+          break;
+        case "perseverance-quotes-btn":
+          showPerseveranceQuotes();
+          break;
+        case "encouragement-quotes-btn":
+          showEncouragementQuotes();
+          break;
+        default:
+          // Handle default case if needed
+          break;
+      }
+    }
+  }
+});
+
+// Function to open the sidebar
+function openNav() {
+  document.getElementById("mySidenav").style.width = "320px";
+  document.getElementById("main").style.marginLeft = "320px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  // Store the state of the sidebar as open in local storage
+  localStorage.setItem("sidebarState", "open");
+}
+
+// Function to close the sidebar
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  document.body.style.backgroundColor = "white";
+  // Store the state of the sidebar as closed in local storage
+  localStorage.setItem("sidebarState", "closed");
+}
+
+// Check if the sidebar state is stored in local storage and set the sidebar accordingly
+document.addEventListener("DOMContentLoaded", function() {
+  const sidebarState = localStorage.getItem("sidebarState");
+  if (sidebarState === "open") {
+      openNav();
+  } else {
+      closeNav();
+  }
+});
+
+// Function to toggle the sidebar state
+function toggleNav() {
+  const sidebarState = localStorage.getItem("sidebarState");
+  if (sidebarState === "open") {
+      closeNav();
+  } else {
+      openNav();
+  }
+}
+
+
+

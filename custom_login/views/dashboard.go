@@ -42,7 +42,6 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 	// Count and Get the Quote in models
 	// For Random Quotes
 	randomQuotes := []models.RandomQuotes{}
-
 	randomCount := uadmin.Count(&randomQuotes, "id > 1")
 	// uadmin.Trail(uadmin.DEBUG, "randomCount: %v\n", randomCount)
 	randomMinID := 2
@@ -52,7 +51,6 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 
 	//For Inspirational Quotes
 	inspirationalQuotes := []models.InspirationalQuotes{}
-
 	inspirationalCount := uadmin.Count(&inspirationalQuotes, "id > 0")
 	// uadmin.Trail(uadmin.DEBUG, "inspirationalCount: %v\n", inspirationalCount)
 	inspirationalMinID := 1
@@ -62,7 +60,6 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 
 	// For Motivational Quotes
 	motivationalQuotes := []models.MotivationalQuotes{}
-
 	motivationalCount := uadmin.Count(&motivationalQuotes, "id > 0")
 	// uadmin.Trail(uadmin.DEBUG, "motivationalCount: %v\n", motivationalCount)
 	motivationalMinID := 1
@@ -72,7 +69,6 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 
 	// For Love Quotes
 	loveQuotes := []models.LoveQuotes{}
-
 	loveCount := uadmin.Count(&loveQuotes, "id > 0")
 	// uadmin.Trail(uadmin.DEBUG, "loveCount: %v\n", loveCount)
 	loveMinID := 1
@@ -82,7 +78,6 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 
 	// For Perceverance Quotes
 	perseveranceQuotes := []models.PerceveranceQuotes{}
-
 	perseveranceCount := uadmin.Count(&perseveranceQuotes, "id > 0")
 	// uadmin.Trail(uadmin.DEBUG, "perseveranceCount: %v\n", perseveranceCount)
 	perseveranceMinID := 1
@@ -92,7 +87,6 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 
 	// For Encouragement Quotes
 	encouragementQuotes := []models.EncouragementQuotes{}
-
 	encouragementCount := uadmin.Count(&encouragementQuotes, "id > 0")
 	// uadmin.Trail(uadmin.DEBUG, "encouragementCount: %v\n", encouragementCount)
 	encouragementMinID := 1
@@ -108,8 +102,7 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 func randomizeNumber(min, max int) int {
 
 	// Generate a random number within the specified range.
+	randomized := rand.Intn(max-min+1) + min
 
-	randmized := rand.Intn(max-min+1) + min
-
-	return randmized
+	return randomized
 }
